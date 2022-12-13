@@ -1,30 +1,58 @@
 import React, { useState } from "react";
 import "../App.css";
 export default function TextForm(props) {
-  const handleOnClick = () => {
+  const handleUpClick = () => {
     // console.log("Button Clicked");
     let newText = text.toUpperCase();
     setText(newText);
+  };
+  const handleLoClick = () => {
+    // console.log("Button Clicked");
+    let newText = text.toLowerCase();
+    setText(newText);
+  };
+  const resetButton = () => {
+    // console.log("Button Clicked");
+    setText("");
   };
   const handleOnChange = (event) => {
     // console.log("Update on change");
     setText(event.target.value);
   };
-  const [text, setText] = useState("Enter your text");
+  const [text, setText] = useState("");
   return (
-    <div>
-      <h1>{props.heading}</h1>
-      <div className="form-floating my-3 py-1">
-        <textarea
-          className="form-control"
-          value={text}
-          id="mybox"
-          onChange={handleOnChange}
-        />
+    <>
+      <div>
+        <h1>{props.heading}</h1>
+        <div className="form-floating my-3 py-1">
+          <textarea
+            className="form-control"
+            value={text}
+            id="mybox"
+            onChange={handleOnChange}
+            placeholder="Enter your text here"
+          />
+        </div>
+        <button className="btn btn-primary" onClick={handleUpClick}>
+          Convert to Uppercase
+        </button>
+        <button className="btn btn-primary mx-2" onClick={handleLoClick}>
+          Convert to Lowercase
+        </button>
+        <button className="btn btn-danger mx-2" onClick={resetButton}>
+          Reset
+        </button>
       </div>
-      <button className="btn btn-primary" onClick={handleOnClick}>
-        Convert to Uppercase
-      </button>
-    </div>
+      <div>
+        <h2 className="my-3">Your text summary</h2>
+        <p>
+          {text.split(" ").length} words and {text.length} characters
+        </p>
+        <h3 className="my-3">Preview</h3>
+        <p>
+            {text}
+        </p>
+      </div>
+    </>
   );
 }

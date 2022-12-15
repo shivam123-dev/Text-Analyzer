@@ -10,6 +10,22 @@ export default function TextForm(props) {
     let newText = text.toLowerCase();
     setText(newText);
   };
+  const inverse = () => {
+    let newText = '';
+    let i = 0;
+    while(i < text.length) {
+      let a = text.charAt(i);
+      if(a == a.toUpperCase()) {
+        a = a.toLowerCase();
+      }
+      else {
+        a = a.toUpperCase();
+      }
+      newText += a;
+      i += 1;
+    }
+    setText(newText);
+  };
   const resetButton = () => {
     setText("");
   };
@@ -36,8 +52,11 @@ export default function TextForm(props) {
         <button className="btn btn-primary mx-2" onClick={handleLoClick}>
           Convert to Lowercase
         </button>
+        <button className="btn btn-primary mx-2" onClick={inverse}>
+          Inverse Case
+        </button>
         <button className="btn btn-danger mx-2" onClick={resetButton}>
-          Reset
+          Clear Text
         </button>
       </div>
       <div>

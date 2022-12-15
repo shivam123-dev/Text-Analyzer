@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../App.css";
+
 export default function TextForm(props) {
   const handleUpClick = () => {
     let newText = text.toUpperCase();
@@ -53,6 +54,3 @@ export default function TextForm(props) {
   );
 }
 
-TextForm.proptypes = {
-  heading : PropTypes.string.isRequired
-};

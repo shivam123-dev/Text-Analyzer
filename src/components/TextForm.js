@@ -2,21 +2,17 @@ import React, { useState } from "react";
 import "../App.css";
 export default function TextForm(props) {
   const handleUpClick = () => {
-    // console.log("Button Clicked");
     let newText = text.toUpperCase();
     setText(newText);
   };
   const handleLoClick = () => {
-    // console.log("Button Clicked");
     let newText = text.toLowerCase();
     setText(newText);
   };
   const resetButton = () => {
-    // console.log("Button Clicked");
     setText("");
   };
   const handleOnChange = (event) => {
-    // console.log("Update on change");
     setText(event.target.value);
   };
   const [text, setText] = useState("");
@@ -56,3 +52,7 @@ export default function TextForm(props) {
     </>
   );
 }
+
+TextForm.proptypes = {
+  heading : PropTypes.string.isRequired
+};

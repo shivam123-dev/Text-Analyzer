@@ -15,7 +15,7 @@ export default function TextForm(props) {
     let i = 0;
     while(i < text.length) {
       let a = text.charAt(i);
-      if(a == a.toUpperCase()) {
+      if(a === a.toUpperCase()) {
         a = a.toLowerCase();
       }
       else {

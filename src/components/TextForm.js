@@ -25,6 +25,16 @@ export default function TextForm(props) {
     }
     setText(newText);
   };
+  const handleCopy = () => {
+    let text = document.getElementById("mybox");
+    text.select();
+    navigator.clipboard.writeText(text.value);
+    alert("The text has been copied to your clipboard!");
+  };
+  const removeExtraSpaces = () => {
+    let newText = text.split(/[ ] + /).join(" ");
+    setText(newText);
+  }
   const resetButton = () => {
     setText("");
   };
@@ -80,6 +90,12 @@ export default function TextForm(props) {
         </button>
         <button className="btn btn-primary mx-2" onClick={inverse}>
           Inverse Case
+        </button>
+        <button className="btn btn-primary mx-2" onClick={handleCopy}>
+          Copy Text
+        </button>
+        <button className="btn btn-primary mx-2" onClick={removeExtraSpaces}>
+          Remove Spaces
         </button>
         <button className="btn btn-danger mx-2" onClick={resetButton}>
           Clear Text

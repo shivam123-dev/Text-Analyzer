@@ -34,7 +34,7 @@ export default function TextForm(props) {
   const removeExtraSpaces = () => {
     let newText = text.split(/[ ] + /).join(" ");
     setText(newText);
-  }
+  };
   const resetButton = () => {
     setText("");
   };
@@ -43,35 +43,10 @@ export default function TextForm(props) {
   };
   const [text, setText] = useState("");
 
-  const [myStyle, setMyStyle] = useState({
-    color: "black",
-    backgroundColor: "white",
-    tText: "Toggle Dark Mode",
-  });
-
-  const handleToggle = () => {
-    if (myStyle.color === "black") {
-      setMyStyle({
-        color: "white",
-        backgroundColor: "black",
-        tText: "Toggle Light Mode",
-      });
-    } else {
-      setMyStyle({
-        color: "black",
-        backgroundColor: "white",
-        tText: "Toggle Dark Mode",
-      });
-    }
-  };
-
   return (
     <>
       <div>
-        <h1 style={myStyle}>{props.heading}</h1>
-        <button className="btn btn-primary mx-2" onClick={handleToggle}>
-          {myStyle.tText}
-        </button>
+        <h1>{props.heading}</h1>
         <div className="form-floating my-3 py-1">
           <textarea
             className="form-control"
@@ -79,7 +54,6 @@ export default function TextForm(props) {
             id="mybox"
             onChange={handleOnChange}
             placeholder="Enter your text here"
-            style={myStyle}
           />
         </div>
         <button className="btn btn-primary" onClick={handleUpClick}>
@@ -101,17 +75,17 @@ export default function TextForm(props) {
           Clear Text
         </button>
       </div>
-      <div style={myStyle}>
-        <h2 className="my-3" style={myStyle}>
+      <div>
+        <h2 className="my-3">
           Your text summary
         </h2>
-        <p style={myStyle}>
+        <p>
           {text.split(" ").length} words and {text.length} characters
         </p>
-        <h3 className="my-3" style={myStyle}>
+        <h3 className="my-3">
           Preview
         </h3>
-        <p style={myStyle}>{text}</p>
+        <p>{text}</p>
       </div>
     </>
   );

@@ -10,12 +10,12 @@ export default function App() {
   const showAlert = (message, type) => {
     setAlert({
       message: message,
-      type: type
-    })
+      type: type,
+    });
     setTimeout(() => {
       setAlert(null);
     }, 1500);
-  }
+  };
 
   const handleMode = () => {
     if (mode === "light") {

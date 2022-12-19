@@ -48,12 +48,23 @@ export default function TextForm(props) {
   };
   const [text, setText] = useState("");
 
+  function countWords(word) {
+    let count = 0;
+    for (let i = 0; i < word.length; i++) {
+      if (word.charAt(i) === " ") {
+        count++;
+      }
+    }
+    return count;
+  }
+
   return (
     <>
       <div>
         <h1>{props.heading}</h1>
         <div className="form-floating my-3 py-1">
           <textarea
+            style={{backgroundColor : `${props.bgColor}`, color:`${props.color}`}}
             className="form-control"
             value={text}
             id="mybox"
@@ -83,7 +94,7 @@ export default function TextForm(props) {
       <div>
         <h2 className="my-3">Your text summary</h2>
         <p>
-          {text.split(" ").length} words and {text.length} characters
+          {countWords(text)} words and {text.length} characters
         </p>
         <h3 className="my-3">Preview</h3>
         <p>{text}</p>

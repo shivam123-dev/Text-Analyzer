@@ -1,8 +1,12 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
+import About from "./components/About";
 import React, { useState } from "react";
 import Alert from "./components/Alert";
+
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 export default function App() {
   const [mode, setMode] = useState("light");
   const [toggleMode, setToggleMode] = useState("dark");
@@ -18,7 +22,7 @@ export default function App() {
       setAlert(null);
     }, 1500);
   };
-  
+
   const handleMode = () => {
     if (mode === "light") {
       document.body.style.backgroundColor = "#031d44";
@@ -34,11 +38,28 @@ export default function App() {
       setToggleMode("dark");
       setMode("light");
       showAlert("Enabled Light Mode!", "success");
-      setBgColor('white');
+      setBgColor("white");
       setColor("black");
     }
   };
-
+  
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: (
+        <TextForm
+          heading="Enter text to analyze"
+          showAlert={showAlert}
+          bgColor={bgColor}
+          color={color}
+        />
+      ),
+    },
+    {
+      path: "/about",
+      element: <About />,
+    },
+  ]);
   return (
     <>
       <Navbar
@@ -51,12 +72,9 @@ export default function App() {
       />
       <Alert alert={alert} />
       <div className="container my-3">
-        <TextForm
-          heading="Enter text to analyze"
-          showAlert={showAlert}
-          bgColor={bgColor}
-          color={color}
-        />
+        <React.StrictMode>
+          <RouterProvider router={router} />
+        </React.StrictMode>
       </div>
     </>
   );

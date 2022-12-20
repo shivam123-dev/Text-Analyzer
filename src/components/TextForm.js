@@ -64,7 +64,10 @@ export default function TextForm(props) {
         <h1>{props.heading}</h1>
         <div className="form-floating my-3 py-1">
           <textarea
-            style={{backgroundColor : `${props.bgColor}`, color:`${props.color}`}}
+            style={{
+              backgroundColor: `${props.bgColor}`,
+              color: `${props.color}`,
+            }}
             className="form-control"
             value={text}
             id="mybox"

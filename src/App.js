@@ -1,12 +1,12 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
-import About from "./components/About";
-import ErrorPage from "./components/ErrorPage";
+// import About from "./components/About";
+// import ErrorPage from "./components/ErrorPage";
 import React, { useState } from "react";
 import Alert from "./components/Alert";
 
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+// import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 export default function App() {
   const [mode, setMode] = useState("light");
@@ -46,40 +46,40 @@ export default function App() {
 
   return (
     <>
-      <Router>
-        <Navbar
-          title="Text Analyzer"
-          homeText="Home"
-          aboutText="About"
-          mode={mode}
-          handleMode={handleMode}
-          toggleMode={toggleMode}
-        />
-        <Alert alert={alert} />
-        <div className="my-3 container">
-          <Routes>
+      {/* <Router> */}
+      <Navbar
+        title="Text Analyzer"
+        homeText="Home"
+        aboutText="About"
+        mode={mode}
+        handleMode={handleMode}
+        toggleMode={toggleMode}
+      />
+      <Alert alert={alert} />
+      <div className="my-3 container">
+        {/* <Routes>
             <Route
               exact
               path="/"
-              element={
-                <TextForm
-                  heading="Enter text to analyze"
-                  showAlert={showAlert}
-                  bgColor={bgColor}
-                  color={color}
-                />
-              }
+              element={ */}
+        <TextForm
+          heading="Enter text to analyze"
+          showAlert={showAlert}
+          bgColor={bgColor}
+          color={color}
+        />
+        {/* }
               errorElement={<ErrorPage />}
-            />
-            <Route
+            /> */}
+        {/* <Route
               exact
               path="/about"
               element={<About />}
               errorElement={<ErrorPage />}
             />
-          </Routes>
-        </div>
-      </Router>
+          </Routes> */}
+      </div>
+      {/* </Router> */}
     </>
   );
 }

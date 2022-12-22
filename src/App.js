@@ -2,10 +2,11 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import About from "./components/About";
+import ErrorPage from "./components/ErrorPage";
 import React, { useState } from "react";
 import Alert from "./components/Alert";
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 export default function App() {
   const [mode, setMode] = useState("light");
@@ -42,40 +43,43 @@ export default function App() {
       setColor("black");
     }
   };
-  
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: (
-        <TextForm
-          heading="Enter text to analyze"
-          showAlert={showAlert}
-          bgColor={bgColor}
-          color={color}
-        />
-      ),
-    },
-    {
-      path: "/about",
-      element: <About />,
-    },
-  ]);
+
   return (
     <>
-      <Navbar
-        title="Text Analyzer"
-        homeText="Home"
-        aboutText="About"
-        mode={mode}
-        handleMode={handleMode}
-        toggleMode={toggleMode}
-      />
-      <Alert alert={alert} />
-      <div className="container my-3">
-        <React.StrictMode>
-          <RouterProvider router={router} />
-        </React.StrictMode>
-      </div>
+      <Router>
+        <Navbar
+          title="Text Analyzer"
+          homeText="Home"
+          aboutText="About"
+          mode={mode}
+          handleMode={handleMode}
+          toggleMode={toggleMode}
+        />
+        <Alert alert={alert} />
+        <div className="my-3 container">
+          <Routes>
+            <Route
+              exact
+              path="/"
+              element={
+                <TextForm
+                  heading="Enter text to analyze"
+                  showAlert={showAlert}
+                  bgColor={bgColor}
+                  color={color}
+                />
+              }
+              errorElement={<ErrorPage />}
+            />
+            <Route
+              exact
+              path="/about"
+              element={<About />}
+              errorElement={<ErrorPage />}
+            />
+          </Routes>
+        </div>
+      </Router>
     </>
   );
 }
